@@ -1,0 +1,77 @@
+﻿<Window x:Class="VideoRentalSystem.ReturnVideoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoRentalSystem"
+        mc:Ignorable="d"
+        Title="Return Video" Height="601.333" Width="1012">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Returning from:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" Height="34" Width="134" Grid.ColumnSpan="2"/>
+        <Label x:Name="custName_label" Content="NAME" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" FontSize="18" Width="349" FontWeight="Bold" Height="34" Grid.ColumnSpan="2"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="10,0,0,0" VerticalAlignment="Top" Width="972" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1" Content="Rented Videos:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="26" Width="89" Grid.ColumnSpan="2"/>
+        <ListView x:Name="rentedVideos_listView" HorizontalAlignment="Left" Height="299" Margin="10,75,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="RentedVideos_listView_SelectionChanged" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" Width="135" DisplayMemberBinding="{Binding VideoTitle}" />
+                    <GridViewColumn Header="Category" Width="60" DisplayMemberBinding="{Binding VideoCategory}" />
+                    <GridViewColumn Header="Date Rented" Width="85" DisplayMemberBinding="{Binding DateRented}" />
+                    <GridViewColumn Header="Due Date" Width="85" DisplayMemberBinding="{Binding DateDue}" />
+                    <GridViewColumn Header="Days Overdue" Width="80" DisplayMemberBinding="{Binding DaysOverdue}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="432,64,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="441,269,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Button x:Name="ReturnFrom_button" Content=">" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="475,192,0,0" VerticalAlignment="Top" Width="41" Height="54" FontSize="22" IsEnabled="False" Click="ReturnFrom_button_Click" Grid.ColumnSpan="2"/>
+        <ListView x:Name="returningVideos_listView" HorizontalAlignment="Left" Height="299" Margin="532,75,0,0" VerticalAlignment="Top" Width="450" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" Width="140" DisplayMemberBinding="{Binding VideoTitle}" />
+                    <GridViewColumn Header="Category" Width="60" DisplayMemberBinding="{Binding VideoCategory}" />
+                    <GridViewColumn Header="Days Overdue" Width="85" DisplayMemberBinding="{Binding DaysOverdue}" />
+                    <GridViewColumn Header="Rental Price" Width="80" DisplayMemberBinding="{Binding VideoPrice}" />
+                    <GridViewColumn Header="Overdue Fee" Width="80" DisplayMemberBinding="{Binding OverdueFee}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label1_Copy" Content="Returning Videos:" HorizontalAlignment="Left" Margin="532,49,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.ColumnSpan="2"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="10,446,0,0" VerticalAlignment="Top" Width="972" Grid.ColumnSpan="2"/>
+        <Label x:Name="label2" Content="Total:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="696,448,0,0" VerticalAlignment="Top" FontSize="20" Height="37" Width="56" Grid.ColumnSpan="2"/>
+        <Label x:Name="total_label" Content="PHP 0.00" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="752,446,0,0" VerticalAlignment="Top" FontSize="22" Width="230" FontWeight="Bold" Height="37" Grid.ColumnSpan="2"/>
+        <Button x:Name="Confirm_btn" Content="Confirm" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="876,509,0,0" VerticalAlignment="Top" Width="106" Height="40" FontSize="14" Click="Confirm_btn_Click" Grid.ColumnSpan="2" IsEnabled="False"/>
+        <Button x:Name="Cancel_btn" Content="Cancel" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="765,509,0,0" VerticalAlignment="Top" Width="106" Height="40" FontSize="14" Click="Cancel_btn_Click" Grid.ColumnSpan="2"/>
+        <Label x:Name="label2_Copy" Content="Overdue fees:" HorizontalAlignment="Left" Margin="621,411,0,0" VerticalAlignment="Top" FontSize="20" Height="37" Width="131" Grid.ColumnSpan="2"/>
+        <Label x:Name="overdueFees_label" Content="PHP 0.00" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="752,417,0,0" VerticalAlignment="Top" FontSize="14" Width="230" Height="29" Grid.ColumnSpan="2"/>
+        <Label x:Name="label2_Copy1" Content="Rental fees:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="621,374,0,0" VerticalAlignment="Top" FontSize="20" Width="131" Height="37" Grid.ColumnSpan="2"/>
+        <Label x:Name="rentalFees_label" Content="PHP 0.00" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="752,381,0,0" VerticalAlignment="Top" FontSize="16" Width="230" FontWeight="Bold" Height="31" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>
